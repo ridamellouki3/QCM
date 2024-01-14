@@ -35,3 +35,11 @@ Route::post('/addtolist',[Professeur_controller::class,'addtoList'])->name('adde
 Route::get('/addquestion',[Professeur_controller::class,'addqstForm'])->name('addqstform');
 Route::post('/addqst',[Professeur_controller::class,'addqst'])->name('addqst');
 Route::post('/Ajouterqst/{solnbr}',[Professeur_controller::class,'Ajouterqst'])->name('Ajouterqst');
+
+Route::get('/show/{id}',[Professeur_controller::class,'show'])->name('show');
+Route::get('/deleteQuestion/{question}',[Professeur_controller::class,'deleteqst'])->name('deleteqst');
+Route::get('/modifyQuestion/{question}',[Professeur_controller::class,'modifyform'])->name('modifyform');
+Route::put('/modifyQuestion/{question}',[Professeur_controller::class,'modifyQST'])->name('modifyQST');
+Route::get('/Deletereponse/{reponse}',[Professeur_controller::class,'deleteresponse'])->name('deleteresponse');
+Route::get('/modifyReponse/{reponse}',[Professeur_controller::class,'modifyforme'])->name('modifyforme');
+Route::put('/modifyReponse/{reponse}',[Professeur_controller::class,'modifyReponse'])->name('modifyReponse');

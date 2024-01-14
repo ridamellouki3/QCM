@@ -20,7 +20,7 @@
     </div>
     <div class="mb-3">
         <input type="radio" id="checkbox2" name="checkboxe[{{$i}}]">
-        <label for="checkbox2" class="form-label" value="true">True</label>
+        <label for="checkbox2" class="form-check-input" value="true">True</label>
 
     </div>
     @endfor

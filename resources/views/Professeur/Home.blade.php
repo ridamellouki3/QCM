@@ -23,15 +23,13 @@
             <td> 
                 <a href="{{route('active',['id' => $q->id ])}}" class="btn {{$q->Active==1 ? "btn-danger":"btn-success"}} mx-1">{{$q->Active==1 ? "Turn off":"Active"}}</a>
                 <a href="{{route('modify',['id' => $q->id ])}}" class="btn btn-primary mx-1">Modify</a>
-                <a href="#" class="btn btn-light mx-1">Show</a>
+                <a href="{{route('show',['id' => $q->id ])}}" class="btn btn-light mx-1">Show</a>
                 <form method="GET" action="{{route('addqstform')}}" class="d-inline">
                   @csrf
                   @method("GET")
                   <input hidden value="{{$q->id}}" name="id">
                   <button class="btn btn-dark mx-1">Add question</button>
-
                 </form>               
-                
                   <form method="POST" action="{{route('Delete')}}" class="d-inline">
                   @csrf
                   @method("DELETE")
@@ -103,7 +101,7 @@
       <th scope="row">{{$s->id}}</th>
       <td>{{$s->name}}</td>
       <td class="text text-dark"><strong>{{$s->email}}</strong></td>
-      @auth
+      @if(Auth::check())
       <td> 
             <form method="POST" action="{{route('addetudtolist')}}" class="d-inline">
             @csrf
@@ -114,7 +112,7 @@
           </form>                 
           
       </td>
-      @endauth
+      @endif
     </tr>
     @endforeach
   </tbody>

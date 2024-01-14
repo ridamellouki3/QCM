@@ -257,5 +257,57 @@ class Professeur_controller extends Controller
         return redirect()->route('Home')->with('success','Question ajouted successfully');
 
     }
+    function show(Qcm $id){
+        $qcm = $id;
+        if(count($qcm->question()->get() ) >0){
+            return view('Professeur.showQCM',compact('qcm'));
+        }
+        else{
+            return redirect()->back()->with('Error','Nothing to show you should add some Questions');
+        }
+       
+    }
+    function deleteqst(Question $question){
+    $question->delete();
+    return redirect()->back()->with('success','Question deleted successfully');
+    }
+    function modifyform(Question $question){
+        return view('Professeur.modifyQuestion',compact('question'));
+    } 
+    function modifyQST(Request $request,Question $question){
+        $validated = $request->validate([
+            'Question'=>'required',
+            'Note'=>'required|Integer'
+        ]);
+        $input = [
+            'text'=>$request->Question,
+            'Note'=>$request->Note
+        ];
+        $question->update($input);
+        return redirect()->route('Home')->with('success','Question UPDATED successfully');
+    }
+    function deleteresponse(Reponse $reponse){
+        $reponse->delete();
+        return redirect()->back()->with('success','reponse deleted successfully');
+    }
+    function modifyforme(Reponse $reponse){
 
+        return view('Professeur.modifyResponse',compact('reponse'));
+    }
+    function modifyReponse(Request $request,Reponse $reponse){
+        $validated = $request->validate([
+            'reponse'=>'required'
+        ]);
+        $input=[
+            'reponse'=>$request->reponse
+        ];
+
+        if($request->has('correct')){
+            $input['correct'] = 1 ;
+        }else{
+            $input['correct'] = 0 ;
+        }
+        $reponse->update($input);
+        return redirect()->route('Home')->with('success','Reponse UPDATED successfully');
+    }
 }

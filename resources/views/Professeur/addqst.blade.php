@@ -17,11 +17,11 @@
     @for ($i = 0; $i < $Question['nbr_sol']; $i++)
     <div class="mb-3">
         <label for="text" class="form-label">Solution {{$i+1}}</label>
-        <input type="text" class="form-control" id="Question" name="sol[{{$i}}]">
+        <input type="text" class="form-control" id="text" name="sol[{{$i}}]">
     </div>
     <div class="mb-3">
-        <input type="radio" id="checkbox2" name="checkboxe[{{$i}}]">
-        <label for="checkbox2" class="form-label" value="true">True</label>
+        <input type="checkbox" id="checkbox2" class="form-check-input" name="checkboxe[{{$i}}]">
+        <label for="checkbox2" class="form-label" value="true"></label>
 
     </div>
     @endfor
@@ -51,7 +51,7 @@
         <input type="number" class="form-control" id="nbr_sol" name="nbr_sol">
     </div>
     <div class="mb-3">
-        <button class="btn btn-primary" class="form">submit</button>
+        <button class="btn btn-primary">submit</button>
     </div>
 </form>
 @endif
