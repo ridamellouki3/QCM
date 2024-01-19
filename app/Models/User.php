@@ -46,11 +46,8 @@ class User extends Authenticatable
     function role(){
         return $this->belongsTo(Role::class);
     }
-    function hasEtudiantrole(){
-        return $this->role =='etudiant';
-    }
-    function hasProfesseurtrole(){
-        return $this->role =='Professeur';
+    function hasRole($roles){
+        return $this->role ==$roles;
     }
     function qcm(){
         return $this->hasMany(Qcm::class);
@@ -59,8 +56,15 @@ class User extends Authenticatable
         return $this->belongsToMany(User::class, '_profs__etudiants', 'etudiant_id', 'professeur_id');
 
     }
-    public function etudiants()
+     function etudiants()
 {
     return $this->belongsToMany(User::class, '_profs__etudiants', 'professeur_id', 'etudiant_id');
 }
+ function answer(){
+    return $this->hasMany(user_answer::class);
+}
+ function passed(){
+    return $this->hasMany(passtest::class);
+ }
+
 }

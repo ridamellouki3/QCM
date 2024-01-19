@@ -19,4 +19,7 @@ class Qcm extends Model
    function question(){
     return $this->hasMany(Question::class);
    }
+   function passe(){
+    return $this->hasMany(passtest::class);
+   }
 }

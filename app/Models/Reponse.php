@@ -17,4 +17,7 @@ class Reponse extends Model
     function question(){
         return $this->belongsTo(Question::class);
     }
+    function useranswer(){
+        return $this->hasMany(User::class);
+    }
 }

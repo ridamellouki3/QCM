@@ -63,7 +63,7 @@ class Professeur_controller extends Controller
         $input= [
             'email'=>$request->Email,
             'password'=>$request->Password,
-            'role_id' => Role::where('role','Professeur')->first()->id 
+            'role_id' => Role::where('role','Professeur')->first()->id
         ];
         
         if(Auth::attempt($input)){
